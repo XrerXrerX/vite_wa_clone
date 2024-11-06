@@ -1,5 +1,5 @@
 const api = (() => {
-  const BASE_URL = 'http://192.168.3.244:8001/api';
+  const BASE_URL = 'http://13.229.107.100:8000/api';
 
 
   async function _fetchWithAuth(url, options = {}) {
