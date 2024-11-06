@@ -30,8 +30,8 @@ function Navbar({ roomName, signOut }) {
   const handleClose = () => setAnchorEl(null);
 
   // New function to handle user click and pass user.id
-  const handleUserClick = (userId) => {
-    dispatch(asyncadduserroom(userId, authUser)); // Dispatch the action with both userId and authUser
+  const handleUserClick = (userId, roomId) => {
+    dispatch(asyncadduserroom(userId, roomId)); // Dispatch the action with both userId and authUser
     handleClose(); // Close the menu after selecting a user
   };
 

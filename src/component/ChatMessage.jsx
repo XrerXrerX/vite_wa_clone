@@ -119,9 +119,16 @@ function ChatMessage({ currentUser, messages }) {
             placeholder="Type a message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault(); // Prevents adding a new line on Enter
+                handleSendMessage(); // Calls the send message function
+              }
+            }}
             sx={{ flex: 1 }}
           />
-          <Button onClick={handleSendMessage} variant="contained" color="primary" sx={{ marginLeft: 1 }}>
+          <Button onClick={handleSendMessage} variant="contained" color="primary" sx={{ marginLeft: 1 }}
+          >
             <Send />
           </Button>
         </Box>

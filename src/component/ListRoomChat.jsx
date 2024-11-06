@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 // RoomItem Component - displays individual room details
 function RoomItem({ room }) {
   const navigate = useNavigate();
-
+  console.log(room);
   const onTalkClick = () => {
     navigate(`/roomid/${room.id}`);
   };
@@ -36,15 +36,15 @@ function RoomItem({ room }) {
           {room.name}
         </Typography>
         <Typography variant="body2" color="lightgray">
-          Owner: {room.authuser_name}
+          Owner: {room.owner}
         </Typography>
       </Box>
 
       {/* Room details: total members and online count */}
       <Box sx={{ textAlign: 'right' }}>
-        <Typography variant="body2">Total Members: {room.members.length}</Typography>
+        {/* <Typography variant="body2">Total Members: {room.members.length}</Typography> */}
         <Typography variant="body2" color="lightgreen">
-          Online: waiting
+          Total Members: {room.members.length}
         </Typography>
       </Box>
     </Box>
