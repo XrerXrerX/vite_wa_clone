@@ -1,0 +1,651 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent-color: #00796b;
+    --foreground-color: #0F1419;
+    --background-color: #704325;
+    --gray-dark-color: #66757F;
+    --gray-light-color: #edeff1;
+    --grey-white-font-form: #dedede;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--foreground-color);
+    background-color: var(--background-color);
+}
+
+.app-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Overall container with 20% margin on top, left, and right */
+/* Container with 20% margins */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 5% auto 0;
+    max-width: 90%;
+    height: calc(100vh - 10%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image grid container */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    /* No gap between grid items */
+    padding: 0;
+    /* Remove padding from grid */
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Individual image in the grid */
+.grid-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.grid-item:hover .grid-image {
+    transform: scale(1.1);
+}
+
+
+
+/* Apply random clip-paths to different grid items */
+.shape-1 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(74.2% at 0 100%);
+    background-color: #743E3C;
+    /* Polygon color */
+}
+
+.shape-1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(43.3% at 0 100%);
+    /* Small circle */
+    background-color: #592E0E;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+.shape-2 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(50.0% at 51% 50%);
+    background-color: #88593B;
+    /* Polygon color */
+}
+
+/* Small Circle */
+.shape-2::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(23.3% at 51% 49%);
+    /* Small circle */
+    background-color: #592E0E;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+.shape-3 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(97.8% at 0 0);
+    background-color: #8C5452;
+    /* Polygon color */
+}
+
+.shape-4 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(95.0% at 100% 0);
+    background-color: #743E3C;
+    /* Polygon color */
+}
+
+.shape-4::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(52.7% at 100% 0);
+    /* Small circle */
+    background-color: #592E0E;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+.shape-5 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-5::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(8.5% at 30% 49%);
+    background-color: #88593B;
+    /* Polygon color */
+}
+
+.shape-5::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(8.5% at 65% 49%);
+    /* Small circle */
+    background-color: #88593B;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+
+.shape-6 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-6::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(99.6% at 100% 100%);
+    background-color: #592E0E;
+    /* Polygon color */
+}
+
+.shape-6::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(48.7% at 100% 100%);
+    /* Small circle */
+    background-color: #8C5452;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+.shape-8 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-8::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(96.6% at 100% 100%);
+    background-color: #505050;
+    /* Polygon color */
+}
+
+
+.shape-7 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-7::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(99.6% at 0 100%);
+    background-color: #592E0E;
+    /* Polygon color */
+}
+
+.shape-7::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(48.7% at 0 100%);
+    /* Small circle */
+    background-color: #421900;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+
+.shape-9 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #704325;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-9::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(15% 16% 15% 16%);
+    background-color: #421900;
+    /* Polygon color */
+}
+
+.shape-10 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-10::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(99.6% at 100% 0);
+    /* Small circle */
+    background-color: #505050;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+
+.shape-11 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-11::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(99.6% at 0 0);
+    background-color: #88593B;
+    /* Polygon color */
+}
+
+.shape-11::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(48.7% at 0 0);
+    /* Small circle */
+    background-color: #421900;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+
+.shape-12 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #743E3C;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+
+.shape-13 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #8C5452;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-14 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-14::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(48.6% at 50% 50%);
+    background-color: #88593B;
+    /* Polygon color */
+}
+
+
+.shape-15 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-15::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(8.5% at 30% 49%);
+    background-color: #8C5452;
+    /* Polygon color */
+}
+
+.shape-15::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(8.5% at 65% 49%);
+    /* Small circle */
+    background-color: #8C5452;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+.shape-16 {
+    position: relative;
+    /* Ensures the pseudo-element is positioned correctly */
+    background-color: #421900;
+
+    /* Background color for the grid item */
+    overflow: hidden;
+}
+
+.shape-16::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(48.6% at 0 0);
+    background-color: #8C5452;
+    /* Polygon color */
+}
+
+.form-group-text-bottom {
+    color: var(--grey-white-font-form);
+    font-size: 12px;
+    margin-top: 10px;
+
+}
+
+.form-group-text-bottom-link {
+    color: #F5B4B1;
+}
+
+.shape-16::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 50%;
+    /* Center horizontally */
+    width: 100%;
+    /* Adjust width as needed for small circle */
+    height: 100%;
+    /* Adjust height as needed for small circle */
+    clip-path: circle(48.6% at 100% 100%);
+    /* Small circle */
+    background-color: #8C5452;
+    /* Color of the small circle */
+    transform: translate(-50%, -50%);
+    /* Center the small circle */
+}
+
+.loading {
+    background-color: rgb(180, 18, 18);
+    height: 6px;
+}
+
+/* Login form container */
+.login-form {
+    background-color: #1d1d1d;
+    padding: 23%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.title-group-form {
+    color: var(--grey-white-font-form);
+    margin-bottom: 52px;
+    font: bolder;
+}
+
+.title-group-form-title {
+    color: var(--grey-white-font-form);
+    margin-bottom: 10px;
+    font: bolder;
+    font-size: 10px;
+}
+
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.form-group label {
+    display: flex;
+    font-size: 14px;
+    color: #f2f2f2;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #3a3a3a;
+    color: #ffffff;
+
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #A17152;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #357abd;
+}
