@@ -4,15 +4,19 @@ import pluginReact from 'eslint-plugin-react';
 import pluginCypress from 'eslint-plugin-cypress/flat';
 import daStyle from 'eslint-config-dicodingacademy';
 
-
-
 export default [
-  { files: ['**/*.{js,mjs,cjs,jsx}'] },
   {
-    languageOptions: { globals: globals.browser }, settings: {
+    files: ['**/*.{js,mjs,cjs,jsx}'],
+    languageOptions: {
+      globals: globals.browser,
+    },
+    settings: {
       react: {
         version: 'detect', // Deteksi otomatis versi React
       },
+    },
+    rules: {
+      camelcase: 'off', // Menonaktifkan aturan camelcase di semua file
     },
   },
   pluginJs.configs.recommended,

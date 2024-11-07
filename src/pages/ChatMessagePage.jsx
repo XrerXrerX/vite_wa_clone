@@ -21,8 +21,7 @@ function ChatMessagePage() {
 
 
   return (
-    <div
-      sx={{}}>
+    <div>
       <ChatMessage
         currentUser={authUser} messages={chats}
       />

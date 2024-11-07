@@ -1,8 +1,7 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-;
 
 // RoomItem Component - displays individual room details
 function RoomItem({ room }) {
@@ -11,7 +10,6 @@ function RoomItem({ room }) {
   const onTalkClick = () => {
     navigate(`/roomid/${room.id}`);
   };
-
 
   return (
     <Box
@@ -24,11 +22,10 @@ function RoomItem({ room }) {
         borderRadius: 1,
         marginBottom: 1,
         color: '#FFE9DC',
-        border: '1px solid #FFE9DC',  // Thin border for each room item
+        border: '1px solid #FFE9DC',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
       }}
       onClick={onTalkClick}
-
     >
       {/* Room name and owner */}
       <Box>
@@ -42,7 +39,6 @@ function RoomItem({ room }) {
 
       {/* Room details: total members and online count */}
       <Box sx={{ textAlign: 'right' }}>
-        {/* <Typography variant="body2">Total Members: {room.members.length}</Typography> */}
         <Typography variant="body2" color="lightgreen">
           Total Members: {room.members.length}
         </Typography>
@@ -54,10 +50,10 @@ function RoomItem({ room }) {
 // Define prop types for RoomItem component
 RoomItem.propTypes = {
   room: PropTypes.shape({
+    id: PropTypes.number.isRequired,            // Add id validation
     name: PropTypes.string.isRequired,
-    authuser_name: PropTypes.string.isRequired,         // Owner's name
+    owner: PropTypes.string.isRequired,         // Add owner validation
     members: PropTypes.arrayOf(PropTypes.number).isRequired,  // Array of member IDs
-    // onlineMembers: PropTypes.number.isRequired,
   }).isRequired,
 };
 
@@ -105,9 +101,10 @@ function ListRoomChat({ roomss }) {
 ListRoomChat.propTypes = {
   roomss: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,          // Add id validation
       name: PropTypes.string.isRequired,
-      authuser_name: PropTypes.string.isRequired,
-      members: PropTypes.arrayOf(PropTypes.number).isRequired,  // Array of member IDs
+      owner: PropTypes.string.isRequired,       // Add owner validation
+      members: PropTypes.arrayOf(PropTypes.number).isRequired,
     })
   ).isRequired,
 };

@@ -9,9 +9,6 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Navbar({ roomName, signOut }) {
   const listusers = useSelector((state) => state.listusers); // Get the list of users from Redux store
-  const authUser = useSelector((state) => state.authUser); // Get the list of users from Redux store
-
-
 
   const location = useLocation();
   const roomId = location.pathname.split('/').pop(); // Split by "/" and take the last part
@@ -93,6 +90,7 @@ function Navbar({ roomName, signOut }) {
 }
 
 Navbar.propTypes = {
+  roomName: PropTypes.string, // Add this line for roomName validation
   signOut: PropTypes.func.isRequired,
 };
 

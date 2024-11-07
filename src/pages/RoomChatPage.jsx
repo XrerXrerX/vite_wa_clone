@@ -19,8 +19,8 @@ function ThreadPage() {
   }, [dispatch]);
 
   const roomss = rooms
-    .filter(room => room.members.includes(authUser.id))
-    .map(room => ({
+    .filter((room) => room.members.includes(authUser.id))
+    .map((room) => ({
       ...room,
       authuser_name: authUser.name
     }));
