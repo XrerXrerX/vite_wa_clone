@@ -5,6 +5,7 @@ import { postedAt } from '../utils';
 
 // Sample ChatBubble Component
 function ChatBubble({ message, isOwnMessage }) {
+
   const isImage = message.attachment_url && message.attachment_url.match(/\.(jpeg|jpg|gif|png)$/i);
   const isVideo = message.attachment_url && message.attachment_url.match(/\.(mp4|webm|ogg)$/i);
 
@@ -82,7 +83,7 @@ ChatBubble.propTypes = {
     sender_id: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
-    message_text: PropTypes.string.isRequired, // Add this line
+    message_text: PropTypes.string, // Add this line
     attachment_url: PropTypes.string,
     created_at: PropTypes.string.isRequired, // Add this line
   }).isRequired,

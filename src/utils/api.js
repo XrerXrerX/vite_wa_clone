@@ -1,9 +1,9 @@
-const api = (() => {
-  const BASE_URL = 'http://13.229.107.100:8000/api';
+/** @format */
 
+const api = (() => {
+  const BASE_URL = "http://192.168.3.247:8000/api";
 
   async function _fetchWithAuth(url, options = {}) {
-
     return fetch(url, {
       ...options,
       headers: {
@@ -13,20 +13,18 @@ const api = (() => {
     });
   }
   function putAccessToken(token) {
-    localStorage.setItem('accessToken', token);
+    localStorage.setItem("accessToken", token);
   }
 
   function getAccessToken() {
-    return localStorage.getItem('accessToken');
+    return localStorage.getItem("accessToken");
   }
   async function register({ email, name, password }) {
-
     const response = await fetch(`${BASE_URL}/register`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'tokenValidation': '5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO'
-
+        "Content-Type": "application/json",
+        tokenValidation: "5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO",
       },
       body: JSON.stringify({
         email,
@@ -37,7 +35,7 @@ const api = (() => {
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message, status);
     }
     const data = responseJson;
@@ -45,13 +43,12 @@ const api = (() => {
     return data;
   }
 
-
   async function login({ email, password }) {
     const response = await fetch(`${BASE_URL}/login`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'tokenValidation': '5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO'
+        "Content-Type": "application/json",
+        tokenValidation: "5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO",
       },
       body: JSON.stringify({
         email,
@@ -61,7 +58,7 @@ const api = (() => {
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
 
@@ -75,7 +72,7 @@ const api = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
 
@@ -90,28 +87,29 @@ const api = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== 'success') {
+    if (status !== "success") {
       throw new Error(message);
     }
 
-    const { data: { users } } = responseJson;
+    const {
+      data: { users },
+    } = responseJson;
 
     return users;
   }
 
   async function getAllRooms() {
     const response = await fetch(`${BASE_URL}/allchatrooms`, {
-
       headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`, // Assuming token is stored in localStorage
-      }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming token is stored in localStorage
+      },
     });
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
 
@@ -126,7 +124,7 @@ const api = (() => {
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
     const data = responseJson;
@@ -136,13 +134,14 @@ const api = (() => {
 
   async function addRoom({ name, max_members }) {
     const response = await _fetchWithAuth(`${BASE_URL}/chatrooms`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'tokenValidation': '5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO',
+        "Content-Type": "application/json",
+        tokenValidation: "5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO",
       },
       body: JSON.stringify({
-        name, max_members
+        name,
+        max_members,
       }),
     });
 
@@ -150,12 +149,11 @@ const api = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
 
     const data = responseJson;
-    console.log(data.chatroom);
     return data.chatroom;
   }
 
@@ -164,40 +162,39 @@ const api = (() => {
 
     // Append the media (image/video) if provided
     if (attachment_url && attachment_url instanceof File) {
-      formData.append('attachment_url', attachment_url);  // 'attachment_url' is the key for the file input field
+      formData.append("attachment_url", attachment_url); // 'attachment_url' is the key for the file input field
     }
 
     // Append the other fields (message_text, chatroom_id)
-    formData.append('message_text', message_text);
-    formData.append('chatroom_id', chatroom_id);
+    formData.append("message_text", message_text);
+    formData.append("chatroom_id", chatroom_id);
 
     // Send the FormData with the POST request
     const response = await _fetchWithAuth(`${BASE_URL}/messages`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'tokenValidation': '5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO',
+        tokenValidation: "5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO",
         // Note: Do not set 'Content-Type' header when using FormData
       },
-      body: formData,  // Use FormData to send both the file and other data
+      body: formData, // Use FormData to send both the file and other data
     });
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
 
     return responseJson.data;
   }
 
-
-
   async function getAllChats(id) {
     const response = await _fetchWithAuth(`${BASE_URL}/messages/${id}`);
+
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
     const { data } = responseJson;
@@ -208,30 +205,28 @@ const api = (() => {
     const response = await _fetchWithAuth(`${BASE_URL}/listuser`);
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
     return responseJson.data;
   }
   async function adduserroom(userId, id) {
     const response = await _fetchWithAuth(`${BASE_URL}/listuser/${id}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'tokenValidation': '5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO',
+        "Content-Type": "application/json",
+        tokenValidation: "5ljrZQkAxtHpEjKfTRKblN7IwFU9sSyO",
       },
       body: JSON.stringify({
-        members: [userId]
+        members: [userId],
       }),
     });
 
     const responseJson = await response.json();
-    console.log(responseJson);
     const { status, message } = responseJson;
-    if (status !== 'Success') {
+    if (status !== "Success") {
       throw new Error(message);
     }
-    console.log(responseJson);
     return responseJson;
   }
   return {

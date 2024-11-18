@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 // RoomItem Component - displays individual room details
 function RoomItem({ room }) {
   const navigate = useNavigate();
-  console.log(room);
   const onTalkClick = () => {
     navigate(`/roomid/${room.id}`);
   };

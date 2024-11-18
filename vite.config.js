@@ -7,4 +7,12 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
   },
+  server: {
+    proxy: {
+      '/ws': {
+        target: 'ws://localhost:3001',
+        ws: true
+      }
+    }
+  }
 });
